@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<odoo>
+<!--Form view-->
+    <record id="view_form_information" model="ir.ui.view">
+        <field name="name">Information Form</field>
+        <field name="model">student.information</field>
+        <field name="arch" type="xml">
+        <form string="Information">
+        <sheet>
+                <group name="group_top">
+                <group name="group_left">
+                    <field name="name" />
+                    <field name="id_student" />
+                    <field name="id_social" />
+                    <field name="gender" />
+                    <field name="date_birth" />
+                    <field name="address" />
+                    <field name="phone" />
+                </group>
+                <group name="group_right">
+                    <field name="gpa" />
+                    <field name="classification" />
+                    <field name="note" />
+                    <field name="image" widget="image" />
+                </group>
+                </group>
+        </sheet>
+            </form>
+        </field>
+    </record>
+<!--List view-->
+    <record id="view_tree_information" model="ir.ui.view">
+        <field name="name">Student List</field>
+        <field name="model">student.information</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="id_student" />
+                <field name="gender"/>
+                <field name="gpa"/>
+                <field name="classification" />
+            </tree>
+        </field>
+    </record>
+<!--Search view-->
+    <record id="view_search_information" model="ir.ui.view">
+        <field name="name">Student Filters</field>
+        <field name="model">student.information</field>
+        <field name="arch" type="xml">
+        <search>
+            <field name="name"/>
+            <field name="id_student" />
+            <field name="gender"/>
+            <field name="gpa"/>
+            <filter name="filter_good" string="Good" domain="[('classification','=','good')]"/>
+                <filter name="filter_average" string="Average" domain="[('classification','=','average')]"/>
+                <filter name="filter_poor" string="Poor" domain="[('classification','=','poor')]"/>
+                <filter name="filter_excellent" string="Excellent" domain="[('classification','=','excellent')]"/>
+            <group string="Group By">
+                <filter name="by_gender" string="Gender" context="{'group_by':'gender'}" />
+                <filter name="by_classification" string="Classification" context="{'group_by':'classification'}" />
+            </group>
+
+        </search>
+        </field>
+    </record>
+</odoo>

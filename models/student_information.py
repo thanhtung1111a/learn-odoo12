@@ -7,22 +7,22 @@ class StudentInfo(models.Model):
     @api.multi
     @api.depends('gpa')
     def set_classification(self):
-        for info in self:
-            if info.gpa:
-                if info.gpa>=9.5:
-                    info.classification='excellent'
+        for student in self:
+            if student.gpa:
+                if student.gpa>=9.5:
+                    student.classification='excellent'
                 else:
-                    if info.gpa>=6.5:
-                        info.classification='good'
+                    if student.gpa>=6.5:
+                        student.classification='good'
                     else:
-                        if info.gpa>=6:
-                            info.classification='average'
+                        if student.gpa>=6:
+                            student.classification='average'
                         else:
-                            info.classification='poor'
+                            student.classification='poor'
     name = fields.Char('Name', required=True)
     id_student = fields.Integer('ID Student', required=True)
     id_social = fields.Char('ID Social')
-    classification=fields.Selection([('male','Male'),
+    gender=fields.Selection([('male','Male'),
     ('female','Female'),('other','Other')],
     default='male',string='Gender')
     date_birth = fields.Date()
