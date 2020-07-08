@@ -34,3 +34,4 @@ class StudentInfo(models.Model):
     ('good','Good'),('average','Average'),('poor','Poor')],
     default='poor',string='Classification',compute='set_classification',store=True)
     note = fields.Text('note')
+    class_room = fields.Many2one('class.information',string='Class')

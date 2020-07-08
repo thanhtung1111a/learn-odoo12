@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Student app menu-->
+    <menuitem id="menu_student" name="School" />
+    <!-- Action to open the Student list -->
+    <act_window id="action_student_info" name="Student Information" res_model="student.information" view_mode="tree,form" />
+    <!-- Menu item to open the Student list -->
+    <menuitem id="menu_student_information" name="Student" parent="menu_student" action="action_student_info"/>
+
+
+    <act_window id="action_teacher_info" name="Teacher Information" res_model="teacher.information" view_mode="tree,form" />
+    <!-- Menu item to open the Student list -->
+    <menuitem id="menu_teacher_information" name="Teacher" parent="menu_student" action="action_teacher_info"/>
+    
+
+    <act_window id="action_class_info" name="Class Information" res_model="class.information" view_mode="tree,form" />
+    <!-- Menu item to open the Student list -->
+    <menuitem id="menu_class_information" name="Class" parent="menu_student" action="action_class_info"/>
+</odoo>

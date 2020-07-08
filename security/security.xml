@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="module_student_category" model="ir.module.category">
+        <field name="name">Student</field>
+    </record>
+    <!-- User-->
+    <record id="student_group_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="module_student_category"/>
+        <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
+    </record>
+    <!--Manage-->
+    <record id="student_group_manager" model="res.groups">
+        <field name="name">Manage</field>
+        <field name="category_id" ref="module_student_category"/>
+        <field name="implied_ids" eval="[(4,ref('student_group_user'))]"/>
+        <field name="users" eval="[(4,ref('base.user_root')),(4,ref('base.user_admin'))]"/>
+    </record>
+
+     <record id="module_teacher_category" model="ir.module.category">
+        <field name="name">Teacher</field>
+    </record>
+    <!-- User-->
+    <record id="teacher_group_user" model="res.groups">
+        <field name="name">User Teacher</field>
+        <field name="category_id" ref="module_teacher_category"/>
+        <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
+    </record>
+    <!--Manage-->
+    <record id="teacher_group_manager" model="res.groups">
+        <field name="name">Manage Teacher</field>
+        <field name="category_id" ref="module_student_category"/>
+        <field name="implied_ids" eval="[(4,ref('teacher_group_user'))]"/>
+        <field name="users" eval="[(4,ref('base.user_root')),(4,ref('base.user_admin'))]"/>
+    </record>
+    
+      <record id="module_class_category" model="ir.module.category">
+        <field name="name">Class</field>
+    </record>
+    <!-- User-->
+    <record id="class_group_user" model="res.groups">
+        <field name="name">User Class</field>
+        <field name="category_id" ref="module_class_category"/>
+        <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
+    </record>
+    <!--Manage-->
+    <record id="class_group_manager" model="res.groups">
+        <field name="name">Manage Class</field>
+        <field name="category_id" ref="module_class_category"/>
+        <field name="implied_ids" eval="[(4,ref('class_group_user'))]"/>
+        <field name="users" eval="[(4,ref('base.user_root')),(4,ref('base.user_admin'))]"/>
+    </record>
+</odoo>
